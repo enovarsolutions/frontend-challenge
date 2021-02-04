@@ -19,6 +19,8 @@ Para preencher os dados da tela você deve utilizar os seguintes endpoints (mock
 - Periods (3): https://demo7273790.mockable.io/suggestedperiods
 - Simulation (4): https://demo7273790.mockable.io/simulation
 
+Apesar dos endpoints serem mockados, é necessário enviar o valor e período escolhido para a próxima tela.
+
 *Nas telas de valor e período, lembre-se de validar se o período digitado pelo usuário está dentro do range possível.*
 
 Ao fazer a requisição para os endpoints, você verá que o resultado é auto explicativo, mas caso tenha alguma dúvida, pode entrar em contato.
