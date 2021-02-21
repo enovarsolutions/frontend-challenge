@@ -1,7 +1,8 @@
-/* html,
+html,
 body {
   height: 100%;
   font-family: sans-serif;
+  background-color: #ececec;
 }
 
 body {
@@ -10,33 +11,22 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
-
-html,
-body {
-  height: 100%;
-  font-family: sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+.bg-black {
+  background-color: #000000;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.bg-pink {
+  background-color: #d22688;
 }
 
-.content {
-  flex: 1 0 auto;
-  padding: 10px;
+.text-pink {
+  color: #d22688;
 }
 
-.footer {
-  flex-shrink: 0;
-  text-align: center;
-  background-color: tomato;
+.btn-black {
   color: white;
+  background-color: #000000;
+  border-color: #000000;
 }

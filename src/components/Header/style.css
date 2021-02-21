@@ -1,0 +1,16 @@
+#header-container {
+  border-bottom-right-radius: 40px;
+}
+
+.arrow-container {
+  position: relative;
+}
+
+.arrow-content {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+}
