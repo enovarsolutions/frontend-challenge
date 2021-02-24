@@ -5,14 +5,69 @@ import Contract from './pages/Contract'
 import Help from './pages/Help'
 import Account from './pages/Account'
 
+import Value from './pages/Value'
+import Time from './pages/Time'
+import Result from './pages/Result'
+
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer, NavigationEvents } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
+
+const HomeStack = createStackNavigator({
+    Home: {
+        screen: Home,
+        navigationOptions: {
+            headerShown: false,
+        }
+    },
+    Value: {
+        screen: Value,
+        navigationOptions: {
+            headerTitle: 'Novo empréstimo',
+            headerStyle: {
+                backgroundColor: '#000',
+                borderBottomRightRadius: 40,
+                height: 70
+            },
+            headerTintColor: '#fff',
+            headerTitleAlign: 'center'
+        }
+    },
+    Time: {
+        screen: Time,
+        navigationOptions: {
+            headerTitle: 'Novo empréstimo',
+            headerStyle: {
+                backgroundColor: '#000',
+                borderBottomRightRadius: 40,
+                height: 70
+            },
+            headerTintColor: '#fff',
+            headerTitleAlign: 'center'
+        }
+    },
+    Result: {
+        screen: Result,
+        navigationOptions: {
+            headerTitle: 'Novo empréstimo',
+            headerStyle: {
+                backgroundColor: '#000',
+                borderBottomRightRadius: 40,
+                height: 70
+            },
+            headerTintColor: '#fff',
+            headerTitleAlign: 'center'
+        }
+    },
+}, {
+    // initialRouteName: 'Value'
+})
 
 const Routes = createAppContainer(
     createBottomTabNavigator({
         Home: {
-            screen: Home,
+            screen: HomeStack,
             navigationOptions: {
                 tabBarLabel: 'Inicio',
                 tabBarIcon: ({tintColor}) => (

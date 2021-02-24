@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, StatusBar, Image, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Logo from '../../assets/tudo-logo2.png';
@@ -10,9 +10,7 @@ import NovoEmprestimo from '../../assets/newLoan.png';
 
 // import { Container } from './styles';
 
-const Home = () => {
-  const width = useWindowDimensions().width;
-  const height = useWindowDimensions().height;
+const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
         <StatusBar backgroundColor="#000" />
@@ -28,33 +26,33 @@ const Home = () => {
           </View>
           <Icon style={styles.arrowBtn} name="chevron-down-circle" size={40} color="#d2267f" />
         </View>
-        <View style={styles.main}>
+        <ScrollView style={styles.main}>
           <View>
             <Text style={styles.mainTitle}>Oportunidades</Text>
           </View>
           <View style={styles.menu}>
-              <View style={styles.menuItem}>
+              <TouchableOpacity onPress={() => navigation.navigate('Value')} style={styles.menuItem}>
                 <Image source={NovoEmprestimo} style={{ height: 70, width: 70 }} />
                 <Text style={styles.textButton}>Novo Empréstimo</Text>
                 <Text style={styles.textItemValue}>Até R$ 3058,10</Text>
-              </View>
-              <View style={styles.menuItem}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
                 <Image source={Portabilidade} style={{ height: 70, width: 70 }} />
                 <Text style={styles.textButton}>Portabilidade</Text>
                 <Text style={styles.textItemValue}>Até R$ 2000,00</Text>
-              </View>
-              <View style={styles.menuItem}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
                 <Image source={Refinanciamento} style={{ height: 70, width: 70 }} />
                 <Text style={styles.textButton}>Refinanciamento</Text>
                 <Text style={styles.textItemValue}></Text>
-              </View>
-              <View style={styles.menuItem}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.menuItem}>
                 <Image source={CreditCard} style={{ height: 70, width: 70 }} />
                 <Text style={styles.textButton}>Cartão de crédito consignado</Text>
                 <Text style={styles.textItemValue}></Text>
-              </View>
+              </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
     </View>
   );
 }
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     fontWeight: 'bold',
     height: 200,
-    borderBottomRightRadius: 50,
+    borderBottomRightRadius: 40,
   },
   headerIcons: {
     flexDirection: 'row',
@@ -101,7 +99,6 @@ const styles = StyleSheet.create({
     marginHorizontal: '45%',
   },
   main: {
-    flex: 1,
     paddingVertical: 35,
     paddingHorizontal: 20,
   },
@@ -127,11 +124,12 @@ const styles = StyleSheet.create({
   },
   textButton: {
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    maxHeight: 40,
   },
   textItemValue: {
     color: '#d22688',
-    fontSize: 12
+    fontSize: 12,
   }
 });
 

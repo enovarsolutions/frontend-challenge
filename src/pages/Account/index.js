@@ -6,7 +6,7 @@ import { View, Text } from 'react-native';
 const Account = () => {
   return (
     <View>
-        <Text>Page Account</Text>
+        <Text>Página de perfil de usuário</Text>
     </View>
   );
 }

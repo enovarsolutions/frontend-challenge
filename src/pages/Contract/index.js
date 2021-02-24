@@ -6,7 +6,7 @@ import { View, Text } from 'react-native';
 const Contract = () => {
   return (
     <View>
-        <Text>Page Contract</Text>
+        <Text>Página de contrato</Text>
     </View>
   );
 }
