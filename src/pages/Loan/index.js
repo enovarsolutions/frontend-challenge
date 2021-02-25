@@ -1,21 +1,30 @@
 import React from "react";
-import "./style.css";
-import { ReactComponent as ArrowDown } from "../../assets/svg/keyboard_arrow_down-24px.svg";
-import { NavLink } from "react-router-dom";
-const Loan = () => {
+import { Route, Switch } from "react-router-dom";
+import HeaderLoan from "../../components/HeaderLoad";
+import { useRouteMatch } from "react-router-dom";
+
+import ValuesContainer from "../../containers/ValuesContainer";
+import PeriodContainer from "../../containers/PeriodContainer";
+import ResultContainer from "../../containers/ResultContainer";
+const Loan = ({ prevPage, setPrevPage }) => {
+  let { path } = useRouteMatch();
   return (
-    <div
-      id="header-container-loan"
-      className="d-flex align-items-center justify-content-center bg-black"
-    >
-      <NavLink
-        to="/"
-        className="btn btn-black arrow-prev-container p-3 mr-auto"
-      >
-        <ArrowDown fill="white" width="40px" height="40px" />
-      </NavLink>
-      <h4 className="text-white mr-auto">Novo empréstimo</h4>
-    </div>
+    <>
+      <HeaderLoan prevRoute={prevPage} />
+      <div className="container pt-4">
+        <Switch>
+          <Route exact path={`${path}/values`}>
+            <ValuesContainer setPrevPage={setPrevPage} />
+          </Route>
+          <Route path={`/newloan/period`}>
+            <PeriodContainer setPrevPage={setPrevPage} />
+          </Route>
+          <Route exact path={`/newloan/result`}>
+            <ResultContainer setPrevPage={setPrevPage} />
+          </Route>
+        </Switch>
+      </div>
+    </>
   );
 };
 
