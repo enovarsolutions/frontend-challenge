@@ -6,7 +6,7 @@ a:hover {
   border-radius: 20pt;
 }
 
-.card-body {
+.card-main > .card-body {
   height: 140px;
 }
 
