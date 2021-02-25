@@ -2,11 +2,9 @@ import React from "react";
 
 import Loan from "../pages/Loan";
 const LoanContainer = () => {
-  return (
-    <div>
-      <Loan />
-    </div>
-  );
+  const [prevPage, setPrevPage] = React.useState("/");
+
+  return <Loan prevPage={prevPage} setPrevPage={setPrevPage} />;
 };
 
 export default LoanContainer;
