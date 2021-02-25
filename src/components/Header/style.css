@@ -2,6 +2,15 @@
   border-bottom-right-radius: 40px;
 }
 
+#logo {
+  width: 45pt;
+  height: 34pt;
+  background: url("../../assets/img/tudo-logo.png") no-repeat left center;
+  background-size: 122px 51px;
+  background-repeat: no-repeat;
+  background-position: right -70px top -3px;
+}
+
 .arrow-container {
   position: relative;
 }

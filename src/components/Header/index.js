@@ -11,7 +11,7 @@ const Header = () => {
       id="header-container"
       className="d-flex justify-content-between bg-black"
     >
-      <h1 className="p-3 mb-auto">Logo</h1>
+      <div id="logo" className="m-3"></div>
       <div className="pt-5 flex-grow-1 text-center text-white">
         <h4>Olá, José Carlos</h4>
         <p className="mb-0">Seu crédito disponivel é de</p>
