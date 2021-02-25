@@ -1,0 +1,7 @@
+#header-container-loan {
+  border-bottom-right-radius: 40px;
+}
+
+.arrow-prev-container {
+  transform: rotate(90deg);
+}
