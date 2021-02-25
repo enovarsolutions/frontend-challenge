@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import HomeContainer from "./containers/HomeContainer";
 import LoanContainer from "./containers/LoanContainer";
@@ -19,6 +19,8 @@ const Routes = () => {
       <Route path="/contracts" component={() => <Example name="contracts" />} />
       <Route path="/doubts" component={() => <Example name="doubts" />} />
       <Route path="/account" component={() => <Example name="account" />} />
+
+      <Route path="*" component={() => <Redirect to="/" />} />
     </Switch>
   );
 };
