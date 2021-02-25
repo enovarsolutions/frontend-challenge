@@ -60,8 +60,6 @@ const HomeStack = createStackNavigator({
             headerTitleAlign: 'center'
         }
     },
-}, {
-    // initialRouteName: 'Value'
 })
 
 const Routes = createAppContainer(

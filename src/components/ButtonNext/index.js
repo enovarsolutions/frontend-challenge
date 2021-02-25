@@ -1,9 +1,9 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet} from 'react-native';
 
-function ButtonNext({children, navigation, screen}) {
+function ButtonNext({children, onPress}) {
   return (
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(screen)}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
           {children}
       </TouchableOpacity>
   );

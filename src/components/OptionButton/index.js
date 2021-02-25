@@ -1,27 +1,25 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet} from 'react-native';
 
-// import { Container } from './styles';
-
-function OptionButton({children}) {
+function OptionButton({children, methodOnPress}) {
   return (
-      <TouchableOpacity style={styles.caixa}>
-          {children}
-      </TouchableOpacity>
+    <TouchableOpacity style={styles.itemValue} onPress={methodOnPress}>
+      {children}
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-    caixa: {
-        backgroundColor: '#fff',
-        marginBottom: 15,
-        height: 70,
-        width: 190,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 12,
-        elevation: 5
-      },
+  itemValue: {
+    height: 70,
+    width: 190,
+    backgroundColor: '#fff',
+    marginBottom: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 12,
+    elevation: 5
+  },
 })
 
 export default OptionButton;

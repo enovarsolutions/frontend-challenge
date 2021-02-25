@@ -1,37 +1,55 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import api from '../../services/api';
+
+import FieldText from '../../components/FieldText';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Logo from '../../assets/tudo-logo2.png';
 
 const Result = ({navigation}) => {
+  const [contractValue, setContractValue] = useState(navigation.getParam('valueSelectedLoan'))
+  const [numberInstallments, setNumberInstallments] = useState(navigation.getParam('valueSelectedPeriod'))
+  const [simulation, setSimulation] = useState({})
+
+  useEffect(() => {
+    async function getDadosApi() {
+      await api.get('/simulation')
+        .then(resp => {
+          setSimulation(resp.data);
+        })
+        .catch(err => alert(err))
+    }
+    getDadosApi();
+  }, [])
+
   return (
     <View style={styles.container}>
-        <Text style={styles.textTask}>Escolha um banco.</Text>
+        <FieldText style={styles.textTask} value="Escolha um banco." />
         <View style={styles.box}>
           <View style={styles.blockOne}>
             <View style={styles.sectionImage}>
               <Image source={Logo} style={styles.image} />
             </View>
             <View style={styles.sectionBlockOne}>
-              <Text style={styles.textBold}>60 parcelas de</Text>
-              <Text style={styles.textDestaque}>R$ 372,65</Text>
-              <Text style={styles.textGray}>Total de R$ 5.030,00</Text>
+              <FieldText style={styles.textBold} value={`${numberInstallments} parcelas de`} />
+              <FieldText style={styles.textDestaque} value={`R$ ${parseFloat((contractValue/numberInstallments) + ((contractValue/numberInstallments) * simulation.annualNominalRate)).toFixed(2)}`} />
+              <FieldText style={styles.textGray} value={`Total de R$ ${parseFloat(numberInstallments * ((contractValue/numberInstallments) + ((contractValue/numberInstallments) * simulation.annualNominalRate))).toFixed(2)}`} />
             </View>
             <View>
-              <Text style={styles.textGray}>Com taxa de</Text>
-              <Text style={styles.textBold}>1,30% a.m.</Text>
+              <FieldText style={styles.textGray} value="Com taxa de" />
+              <FieldText style={styles.textBold} value={`${parseFloat(simulation.annualNominalRate).toFixed(2)}% a.m.`} />
             </View>
           </View>
           <View style={styles.blockTwo}>
             <View style={styles.textIcon}>
-              <Text style={styles.textGray}>Previsão de pagamento </Text>
+              <FieldText style={styles.textGray} value="Previsão de pagamento" />
               <Icon name="help-circle-outline" size={20} color="#D22688" />
             </View>
-            <Text style={styles.textBold}>19 de maio a 01 de junho de 2021</Text>
+            <FieldText style={styles.textBold} value="19 de maio a 01 de junho de 2021" />
             <TouchableOpacity style={styles.btnContratar}>
               <View style={styles.textIcon}>
-                <Text style={styles.textBtnContratar}>Contratar</Text>
+                <FieldText style={styles.textBtnContratar} value="Contratar" />
                 <Icon name="chevron-forward" size={22} color="#D22688" />
               </View>
             </TouchableOpacity>
