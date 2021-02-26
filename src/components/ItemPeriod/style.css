@@ -1,0 +1,6 @@
+.item-period {
+  height: fit-content;
+  border-radius: 10pt;
+  -webkit-box-shadow: 0px 5px 10px 0px #5b5b5b33;
+  box-shadow: 0px 5px 10px 0px #5b5b5b33;
+}

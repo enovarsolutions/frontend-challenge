@@ -1,0 +1,44 @@
+input[type="number"].underline {
+  width: 100px;
+  background: transparent;
+  border: none;
+  border-bottom: 1pt solid #7070708f;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: center;
+}
+input[type="number"].underline::placeholder {
+  color: #000000;
+}
+
+input[type="number"].underline:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-continue {
+  border-radius: 30pt;
+}
+
+.choice-card {
+  border-left: 5pt solid #d22688;
+  border-radius: 6pt;
+  -webkit-box-shadow: 0px 5px 10px 0px #5b5b5b33;
+  box-shadow: 0px 5px 10px 0px #5b5b5b33;
+}
+
+.logo-tudo {
+  width: 63pt;
+  border: 0.5pt solid #5b5b5b33;
+  border-radius: 10pt;
+  background: url("../../../assets/img/tudo-logo.png") no-repeat left center;
+  background-size: 150px 65px;
+  background-repeat: no-repeat;
+  background-position: right -81px bottom 12px;
+}
+
+.arrow-right {
+  transform: rotate(-90deg);
+  fill: #d22688;
+}

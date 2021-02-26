@@ -1,0 +1,16 @@
+a:hover {
+  text-decoration: none;
+}
+
+.card-main {
+  border-radius: 20pt;
+}
+
+.card-main > .card-body {
+  height: 140px;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
