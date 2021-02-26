@@ -2,7 +2,14 @@ import React from "react";
 import "./style.css";
 
 import { ReactComponent as Arrow } from "../../../assets/svg/keyboard_arrow_down-24px.svg";
-const Result = () => {
+
+import { formatNumber } from "../../../helpers/formatHelpers";
+const Result = ({
+  numberOfInstallments,
+  installmentsValue,
+  contractValue,
+  interest,
+}) => {
   return (
     <>
       <h5 className="pb-2 font-weight-bold">Escolha um banco</h5>
@@ -11,21 +18,23 @@ const Result = () => {
         <div className="card-body">
           <div className="d-flex justify-content-between">
             <div className="logo-tudo"></div>
-            {/* <img src={logo} className="logo-tudo" alt="Logo" width="63" /> */}
             <div className="d-flex flex-column">
               <span>
-                <strong>60 parcelas de</strong>{" "}
+                <strong>{numberOfInstallments} parcelas de</strong>{" "}
               </span>
               <h4 className="text-pink">
-                <strong>R$ 372,65</strong>
+                <strong> {formatNumber(installmentsValue)}</strong>
               </h4>
-              <span>Total de R$ 5.030,00</span>
+              <span>
+                Total de{" "}
+                {formatNumber(installmentsValue * numberOfInstallments)}
+              </span>
             </div>
             <div className="d-flex flex-column justify-content-center">
               <div className="px-4">
                 <span className="d-block">com taxa de</span>
                 <span>
-                  <strong>1,30% a.m.</strong>
+                  <strong>{!isNaN(interest) ? interest : 0}% a.m.</strong>
                 </span>
               </div>
             </div>
