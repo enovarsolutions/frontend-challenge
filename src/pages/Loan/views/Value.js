@@ -2,15 +2,30 @@ import React from "react";
 import "./style.css";
 import ItemValue from "../../../components/ItemValue";
 
-const Value = ({ handleValue, setValueSelected }) => {
+const Value = ({
+  handleValue,
+  dispatch,
+  getValueSelected,
+  maxValue,
+  minValue,
+  suggestedValues,
+  hasErros,
+  error,
+  loading,
+}) => {
   return (
     <>
       <h6 className="pb-2 font-weight-bold">De Quanto você precisa?</h6>
+      <p className="text-danger">{error && error}</p>
       <div className="row">
-        <ItemValue value={300} setValueSelected={setValueSelected} />
-        <ItemValue value={2660} setValueSelected={setValueSelected} />
-        <ItemValue value={5030} setValueSelected={setValueSelected} />
-        <ItemValue value={7407} setValueSelected={setValueSelected} />
+        {suggestedValues.map((value) => (
+          <ItemValue
+            key={value}
+            value={value}
+            getValueSelected={getValueSelected}
+            dispatch={dispatch}
+          />
+        ))}
       </div>
       <div className="d-flex align-items-center justify-content-center mb-5">
         <label className="font-weight-bold my-auto" htmlFor="anotherValue">
@@ -19,8 +34,10 @@ const Value = ({ handleValue, setValueSelected }) => {
         <input
           type="number"
           className="underline"
-          onChange={(e) => setValueSelected(e.target.value)}
+          onChange={(e) => dispatch(getValueSelected(e.target.value))}
           placeholder="R$ 00,00"
+          min={minValue}
+          max={maxValue}
         />
       </div>
       <div className="d-flex flex-column align-items-center">
