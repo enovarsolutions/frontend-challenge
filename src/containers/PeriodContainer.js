@@ -1,26 +1,63 @@
 import React from "react";
-import Period from "../pages/Loan/views/Period";
-
 import { useHistory } from "react-router-dom";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  fetchPeriods,
+  periodSelector,
+  getPeriodSelected,
+  getError,
+} from "../store/slices/period";
+
+import Period from "../pages/Loan/views/Period";
+
+import { inRange } from "../helpers/rangeHelper";
 const PeriodContainer = ({ setPrevPage }) => {
-  const [periodSelected, setPeriodSelected] = React.useState("");
   let history = useHistory();
+  const dispatch = useDispatch();
+  const { period } = useSelector(periodSelector);
+
+  const {
+    error,
+    hasErros,
+    loading,
+    maxValue,
+    minValue,
+    periodSelected,
+    suggestedInstallments,
+  } = period;
 
   React.useEffect(() => {
     setPrevPage("/newloan/values");
   });
 
-  const handlePeriod = (value) => {
-    if (typeof periodSelected === "string") {
-      Number(periodSelected);
-    }
+  React.useEffect(() => {
+    dispatch(fetchPeriods());
+  }, [dispatch]);
 
-    history.push("/newloan/result");
+  const handlePeriod = () => {
+    if (!inRange(periodSelected, minValue, maxValue)) {
+      dispatch(getError(`Escolha um valor entre ${minValue} e ${maxValue}`));
+
+      return false;
+    }
+    dispatch(getError(""));
+    history.push("/newloan/result", { period: periodSelected });
   };
 
   return (
-    <Period handlePeriod={handlePeriod} setPeriodSelected={setPeriodSelected} />
+    <Period
+      handlePeriod={handlePeriod}
+      dispatch={dispatch}
+      getPeriodSelected={getPeriodSelected}
+      maxValue={maxValue}
+      minValue={minValue}
+      suggestedInstallments={suggestedInstallments}
+      hasErros={hasErros}
+      error={error}
+      loading={loading}
+    />
   );
 };
 

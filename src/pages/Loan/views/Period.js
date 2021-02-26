@@ -2,24 +2,42 @@ import React from "react";
 import "./style.css";
 import ItemPeriod from "../../../components/ItemPeriod";
 
-const Period = ({ handlePeriod, setPeriodSelected }) => {
+const Period = ({
+  handlePeriod,
+  dispatch,
+  getPeriodSelected,
+  maxValue,
+  minValue,
+  suggestedInstallments,
+  hasErros,
+  error,
+  loading,
+}) => {
   return (
     <>
       <h6 className="pb-2 font-weight-bold">
         Em quanto tempo você quer pagar?
       </h6>
+      {error && <p className="text-danger">{error}</p>}
       <div className="row">
-        <ItemPeriod period={48} periodDescription="meses" />
-        <ItemPeriod period={60} periodDescription="meses" />
-        <ItemPeriod period={72} periodDescription="meses" />
-        <ItemPeriod period={84} periodDescription="meses" />
+        {suggestedInstallments.map((period) => (
+          <ItemPeriod
+            key={period}
+            period={period}
+            getPeriodSelected={getPeriodSelected}
+            dispatch={dispatch}
+            periodDescription="meses"
+          />
+        ))}
       </div>
       <div className="d-flex align-items-center justify-content-center mb-5">
         <input
           type="number"
           className="underline"
-          onChange={(e) => setPeriodSelected(e.target.value)}
+          onChange={(e) => dispatch(getPeriodSelected(e.target.value))}
           placeholder="00"
+          min={minValue}
+          max={maxValue}
         />
         <label className="font-weight-bold my-auto pl-1">meses</label>
       </div>
