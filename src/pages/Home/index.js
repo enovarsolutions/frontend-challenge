@@ -2,11 +2,27 @@ import React from "react";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
 
-const Home = () => {
+const Home = ({
+  creditCardMaxValue,
+  hasErros,
+  loading,
+  loanMaxValue,
+  portabilityMaxValue,
+  refinanceMaxValue,
+  totalMaxValue,
+}) => {
   return (
     <>
-      <Header />
-      <Main />
+      <Header totalMaxValue={totalMaxValue} />
+      {loading && <h1>Carregando</h1>}
+      {!loading && (
+        <Main
+          creditCardMaxValue={creditCardMaxValue}
+          loanMaxValue={loanMaxValue}
+          portabilityMaxValue={portabilityMaxValue}
+          refinanceMaxValue={refinanceMaxValue}
+        />
+      )}
     </>
   );
 };
