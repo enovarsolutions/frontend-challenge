@@ -15,7 +15,7 @@ const ItemMain = ({ icon, description, subdescription, route, disabled }) => {
           <div className="card-body">
             <img src={icon} alt={description} height="50px" width="50px" />
             <h5 className="text-dark">{description}</h5>
-            <h6 className="text-pink">{subdescription}</h6>
+            <h6 className="text-pink">{!disabled && subdescription}</h6>
           </div>
         </div>
       </MyLink>
