@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchResult, resultSelector, getError } from "../store/slices/result";
+import { fetchResult, resultSelector } from "../store/slices/result";
 
 import Result from "../pages/Loan/views/Result";
 
