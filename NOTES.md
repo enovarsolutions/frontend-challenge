@@ -12,3 +12,17 @@ Atente-se aos seguintes pontos antes de começar:
 - Dentro da pasta em seu computador execute o comando _npm install_ (ou _npm i_) ou _yarn_, isso vai instalar as dependências listadas no package.json
 - Com as dependências instaladas, certifique-se que tem um dispositivo móvel ou emulador instalado na sua máquina e disponível para utilizar. Tendo isso, execute _yarn android_, isso irá executar o build do projeto no seu dispositivo.
 - Se tudo ocorer bem, terá o projeto instalado no seu dispositivo.
+
+## Resulado
+
+### Icon
+![Ícone](telas/icon.jpeg)
+
+### Home
+![Ícone](telas/home.jpeg)
+
+### Tela 1
+![Ícone](telas/tela1.jpeg)
+
+### Tela Final
+![Ícone](telas/tela2.jpeg)
